@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "70870972968",
+    "project_id": "isaacglobal-1c4cb",
+    "storage_bucket": "isaacglobal-1c4cb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:70870972968:android:0be722d66561273a68931d",
+        "android_client_info": {
+          "package_name": "com.isaac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "70870972968-9btov6apmiirj8eujeer12ksv9td9baj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.isaac",
+            "certificate_hash": "c20b6accaad1b0ca023e3524ec81c8120c31ba40"
+          }
+        },
+        {
+          "client_id": "70870972968-kutmbarlntm8rofved4f1m1qfpifedd8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi7e59brbGG75cY14e3fDvjoI0kIVrP9Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "70870972968-kutmbarlntm8rofved4f1m1qfpifedd8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
