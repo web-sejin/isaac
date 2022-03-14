@@ -1892,6 +1892,11 @@
   "resolved" "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz"
   "version" "1.0.2"
 
+"base-64@^0.1.0":
+  "integrity" "sha1-eAqZyE59YAJgNhURxId2E78k9rs="
+  "resolved" "https://registry.npmjs.org/base-64/-/base-64-0.1.0.tgz"
+  "version" "0.1.0"
+
 "base@^0.11.1":
   "integrity" "sha512-5T6P4xPgpp0YDFvSWwEZ4NoE3aM4QBQXDzmVbraCkFj8zHM+mba8SyqB5DbZWyR7mYHo6Y7BdQo3MoA4m0TeQg=="
   "resolved" "https://registry.npmjs.org/base/-/base-0.11.2.tgz"
@@ -5681,12 +5686,20 @@
     "jscodeshift" "^0.11.0"
     "nullthrows" "^1.1.1"
 
+"react-native-fs@^2.19.0":
+  "integrity" "sha512-Yl09IbETkV5UJcBtVtBLttyTmiAhJIHpGA/LvredI5dYiw3MXMMVu42bzELiuH2Bwj7F+qd0fMNvgfBDiDxd2A=="
+  "resolved" "https://registry.npmjs.org/react-native-fs/-/react-native-fs-2.19.0.tgz"
+  "version" "2.19.0"
+  dependencies:
+    "base-64" "^0.1.0"
+    "utf8" "^3.0.0"
+
 "react-native-splash-screen@3.3.0":
   "integrity" "sha512-rGjt6HkoSXxMqH4SQUJ1gnPQlPJV8+J47+4yhgTIan4bVvAwJhEeJH7wWt9hXSdH4+VfwTS0GTaflj1Tw83IhA=="
   "resolved" "https://registry.npmjs.org/react-native-splash-screen/-/react-native-splash-screen-3.3.0.tgz"
   "version" "3.3.0"
 
-"react-native-webview@11.17.2":
+"react-native-webview@^11.17.2":
   "integrity" "sha512-7Sac02xq11qFACJmSUuCnH0aUFtSWUvSRC09EZ2qwNXq4IvT05xlX6978nlKUXf2ljw/0qZIzqbKzuXnu6Wq8Q=="
   "resolved" "https://registry.npmjs.org/react-native-webview/-/react-native-webview-11.17.2.tgz"
   "version" "11.17.2"
@@ -6787,6 +6800,11 @@
   "integrity" "sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ=="
   "resolved" "https://registry.npmjs.org/use/-/use-3.1.1.tgz"
   "version" "3.1.1"
+
+"utf8@^3.0.0":
+  "integrity" "sha512-E8VjFIQ/TyQgp+TZfS6l8yp/xWppSAHzidGiRrqe4bK4XP9pTRyKFgGJpO3SN7zdX4DeomTrwaseCHovfpFcqQ=="
+  "resolved" "https://registry.npmjs.org/utf8/-/utf8-3.0.0.tgz"
+  "version" "3.0.0"
 
 "util-deprecate@~1.0.1":
   "integrity" "sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8="

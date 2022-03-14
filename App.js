@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useRef} from 'react';
-import {Alert, BackHandler, ToastAndroid, Platform} from 'react-native';
+import {Alert, BackHandler, ToastAndroid, Platform, SafeAreaView} from 'react-native';
 import messaging from '@react-native-firebase/messaging';
 import MyWebView from './src/Webview'
 import axios from 'axios';
@@ -13,7 +13,7 @@ const App = (props) => {
     if(token){
       axios.get(`http://cnj2019.cafe24.com/api/token.php?token=${token}`)
       .then((response) => {
-        console.log("성공", token);
+        console.log("토큰 전송 성공");
         setDeviceToken(token);
         // AsyncStorage.setItem('token',token, () => {
         //   console.log('디바이스 토큰 저장 완료')
@@ -36,7 +36,9 @@ const App = (props) => {
 
 
   return (
-    <MyWebView deviceToken={deviceToken} />
+    <SafeAreaView style={{flex:1}}>
+        <MyWebView deviceToken={deviceToken} />
+    </SafeAreaView>
   );
 };
 

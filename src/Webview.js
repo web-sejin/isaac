@@ -34,7 +34,7 @@ class MyWebComponent extends Component {
     }
 
 
-    
+
     //홈일 때 뒤로가기 버튼 클릭 이벤트
     // 2000(2초) 안에 back 버튼을 한번 더 클릭 할 경우 앱 종료    
     if (!this.stateAA.isQuit) {      
@@ -61,13 +61,14 @@ class MyWebComponent extends Component {
   }
 
   // 이벤트 등록
-  componentDidMount() {    
+  componentDidMount() {
+    this.requestUserPermissionForFCM();
     setTimeout(() => {
         SplashScreen.hide();
-    }, 1000);
+    }, 2000);
 
-    const confirmAlert = () => {
-      this.webView.ref.postMessage(JSON.stringify({action: 'confirmAlert'}));
+    const confirmAlert = (body) => {
+      this.webView.ref.postMessage(JSON.stringify({action: 'confirmAlert', status:body}));
     };
     
     if (Platform.OS === 'android') {
@@ -80,6 +81,7 @@ class MyWebComponent extends Component {
       }, 2000);
     }
 
+    //푸시를 받으면 호출됨
     const unsubscribe = messaging().onMessage(async remoteMessage => {
       console.log("APP PUSH!");
       const msg = JSON.stringify(remoteMessage);
@@ -91,13 +93,47 @@ class MyWebComponent extends Component {
         [
           {
             text: '확인',
-            onPress: confirmAlert,
+            onPress: () => confirmAlert(body),
           },
         ],
       );
     });
 
     return unsubscribe;
+  }
+
+  //알림창을 클릭한 경우 호출됨
+  requestUserPermissionForFCM = async () => {
+    const authStatus = await messaging().requestPermission();
+    const enabled =
+        authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+        authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+
+    this.handleFcmMessage();
+  }
+
+  handleFcmMessage = () => {
+      //앱이 완전 꺼지지지 않은 백그라운드 상태에서 메시지 받았을 때
+      messaging().onNotificationOpenedApp(remoteMessage => {
+          console.log( 'Notification caused app to open from background state:', remoteMessage.notification, );
+          const content = remoteMessage.notification.body;
+          this.webView.ref.postMessage(JSON.stringify({action: 'backgroundAppPush', status: content}));
+      });
+
+      /*messaging().setBackgroundMessageHandler(async (remoteMessage) => {
+          console.log('Message handled in the background!', remoteMessage);
+      });*/
+
+      //앱이 완전 꺼진 백그라운드 상태에서 메시지 받았을 때
+      messaging().getInitialNotification().then((remoteMessage) => {
+            if (remoteMessage) {
+              setTimeout(() => {
+                console.log('[push] getInitialNotification', remoteMessage.notification);
+                const content = remoteMessage.notification.body;
+                this.webView.ref.postMessage(JSON.stringify({action: 'backgroundAppPush', status: content}));
+              }, 500);
+            }
+      });
   }
 
   // 이벤트 해제
